@@ -23,12 +23,12 @@ create arrays of arbitrary type.
 
 %package devel
 Summary:        Development files for Numpy applications
-Group:          Development/Libraries/Python
+Group:          Development/Languages
 Requires:       %{name} = %{version}
 Requires:       python-devel
 
 %description devel
-This package contains files for developing applications using %{modname}.
+This package contains files for developing applications using Numpy.
 
 %package f2py
 Summary:        Fortran to py for numpy
@@ -91,6 +91,7 @@ rm -rf %{buildroot}
 %files devel
 %defattr(-,root,root)
 %{python_sitearch}/numpy/*/*/*.c
+%{python_sitearch}/numpy/*/*.c
 %{python_sitearch}/numpy/*/*.h
 %{python_sitearch}/numpy/*/*/*.h
 %{python_sitearch}/numpy/*/*/*/*.h
