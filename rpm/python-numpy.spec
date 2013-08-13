@@ -6,7 +6,7 @@ Summary:        A fast multidimensional array facility for Python
 Group:          Development/Languages
 License:        BSD
 URL:            http://numeric.scipy.org/
-Source0:        numpy-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
@@ -30,7 +30,7 @@ Provides:       f2py
 This package includes a version of f2py that works properly with NumPy.
 
 %prep
-%setup -q -n numpy-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
 cd numpy
