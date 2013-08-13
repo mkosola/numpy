@@ -8,8 +8,10 @@ License:        BSD
 URL:            http://numeric.scipy.org/
 Source0:        %{name}-%{version}.tar.gz
 
-BuildRequires:  python2-devel
+BuildRequires:  python-devel
 BuildRequires:  python-setuptools
+
+Provides:       numpy
 
 %description
 NumPy is a general-purpose array-processing package designed to
@@ -18,6 +20,15 @@ records without sacrificing too much speed for small multi-dimensional
 arrays.  NumPy is built on the Numeric code base and adds features
 introduced by numarray as well as an extended C-API and the ability to
 create arrays of arbitrary type.
+
+%package devel
+Summary:        Development files for Numpy applications
+Group:          Development/Libraries/Python
+Requires:       %{name} = %{version}
+Requires:       python-devel
+
+%description devel
+This package contains files for developing applications using %{modname}.
 
 %package f2py
 Summary:        Fortran to py for numpy
@@ -40,6 +51,9 @@ cd numpy
 cd numpy
 rm -rf %{buildroot}
 %{__python} setup.py install --root %{buildroot}
+
+# Remove tests
+rm -rf %{buildroot}%{python_sitearch}/numpy/{core,distutils,f2py,fft,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests
 
 # Remove docs
 rm -rf %{buildroot}%{python_sitearch}/numpy/doc
@@ -68,6 +82,19 @@ rm -rf %{buildroot}
 %{python_sitearch}/numpy/matrixlib
 %{python_sitearch}/numpy/polynomial
 %{python_sitearch}/numpy-*.egg-info
+%exclude %{python_sitearch}/numpy/*/*/*.c
+%exclude %{python_sitearch}/numpy/*/*.h
+%exclude %{python_sitearch}/numpy/*/*/*.h
+%exclude %{python_sitearch}/numpy/*/*/*/*.h
+%exclude %{python_sitearch}/numpy/core/lib/libnpymath.a
+
+%files devel
+%defattr(-,root,root)
+%{python_sitearch}/numpy/*/*/*.c
+%{python_sitearch}/numpy/*/*.h
+%{python_sitearch}/numpy/*/*/*.h
+%{python_sitearch}/numpy/*/*/*/*.h
+%{python_sitearch}/numpy/core/lib/libnpymath.a
 
 %files f2py
 %defattr(-,root,root,-)
