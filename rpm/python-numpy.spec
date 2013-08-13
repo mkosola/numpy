@@ -91,7 +91,6 @@ rm -rf %{buildroot}
 %files devel
 %defattr(-,root,root)
 %{python_sitearch}/numpy/*/*/*.c
-%{python_sitearch}/numpy/*/*.c
 %{python_sitearch}/numpy/*/*.h
 %{python_sitearch}/numpy/*/*/*.h
 %{python_sitearch}/numpy/*/*/*/*.h
