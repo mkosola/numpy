@@ -89,7 +89,7 @@ rm -rf %{buildroot}
 %exclude %{python_sitearch}/numpy/core/lib/libnpymath.a
 
 %files devel
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %{python_sitearch}/numpy/*/*/*.c
 %{python_sitearch}/numpy/*/*.h
 %{python_sitearch}/numpy/*/*/*.h
@@ -100,3 +100,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_bindir}/f2py
 %{python_sitearch}/numpy/f2py
+%exclude %{python_sitearch}/numpy/f2py/*/*.h
+%exclude %{python_sitearch}/numpy/f2py/*/*.c
